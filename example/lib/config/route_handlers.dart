@@ -21,7 +21,7 @@ var demoRouteHandler = Handler(handlerFunc: (BuildContext context, Map<String, L
   String message = params["message"]?.first;
   String colorHex = params["color_hex"]?.first;
   String result = params["result"]?.first;
-  if (state == null) {
+  if (state != null) {
     result = state["text"];
   }
   Color color = Color(0xFFFFFFFF);

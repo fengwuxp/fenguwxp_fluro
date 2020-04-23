@@ -84,7 +84,7 @@ class Router {
       return MaterialPageRoute<Null>(
           settings: routeSettings,
           builder: (BuildContext context) {
-            return notFoundHandler.handlerFunc(context, parameters);
+            return notFoundHandler.handlerFunc(context, parameters, null);
           });
     };
     return creator(RouteSettings(name: path), null);
@@ -125,14 +125,14 @@ class Router {
               settings: routeSettings,
               fullscreenDialog: transition == TransitionType.nativeModal,
               builder: (BuildContext context) {
-                return handler.handlerFunc(context, parameters);
+                return handler.handlerFunc(context, parameters, state);
               });
         } else {
           return MaterialPageRoute<dynamic>(
               settings: routeSettings,
               fullscreenDialog: transition == TransitionType.nativeModal,
               builder: (BuildContext context) {
-                return handler.handlerFunc(context, parameters);
+                return handler.handlerFunc(context, parameters, state);
               });
         }
       } else if (transition == TransitionType.material || transition == TransitionType.materialFullScreenDialog) {
@@ -140,14 +140,14 @@ class Router {
             settings: routeSettings,
             fullscreenDialog: transition == TransitionType.materialFullScreenDialog,
             builder: (BuildContext context) {
-              return handler.handlerFunc(context, parameters);
+              return handler.handlerFunc(context, parameters, state);
             });
       } else if (transition == TransitionType.cupertino || transition == TransitionType.cupertinoFullScreenDialog) {
         return CupertinoPageRoute<dynamic>(
             settings: routeSettings,
             fullscreenDialog: transition == TransitionType.cupertinoFullScreenDialog,
             builder: (BuildContext context) {
-              return handler.handlerFunc(context, parameters);
+              return handler.handlerFunc(context, parameters, state);
             });
       } else {
         var routeTransitionsBuilder;
@@ -159,7 +159,7 @@ class Router {
         return PageRouteBuilder<dynamic>(
           settings: routeSettings,
           pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
-            return handler.handlerFunc(context, parameters);
+            return handler.handlerFunc(context, parameters, state);
           },
           transitionDuration: transitionDuration,
           transitionsBuilder: routeTransitionsBuilder,

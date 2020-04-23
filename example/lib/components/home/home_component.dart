@@ -212,7 +212,7 @@ class HomeComponentState extends State<HomeComponent> {
         route = "$route&result=$result";
       }
 
-      Application.router.navigateTo(context, route, transition: transitionType).then((result) {
+      Application.router.navigateTo(context, route,state: {'text': "你好啊2"}, transition: transitionType).then((result) {
         if (key == "pop-result") {
           Application.router.navigateTo(context, "/demo/func?message=$result", state: {'text': "你好啊"});
         }
@@ -233,6 +233,7 @@ class HomeComponentState extends State<HomeComponent> {
       Application.router.navigateTo(
         context,
         "/demo?message=$message&color_hex=$hexCode",
+        state: {'text': "你好啊1"},
         transition: TransitionType.custom,
         transitionBuilder: transition,
         transitionDuration: const Duration(milliseconds: 600),
