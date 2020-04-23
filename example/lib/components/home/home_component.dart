@@ -2,7 +2,7 @@
  * fluro
  * Created by Yakka
  * https://theyakka.com
- * 
+ *
  * Copyright (c) 2019 Yakka, LLC. All rights reserved.
  * See LICENSE for distribution and usage details.
  */
@@ -22,17 +22,8 @@ class HomeComponent extends StatefulWidget {
 
 class HomeComponentState extends State<HomeComponent> {
   var _deepLinkOpacity = 1.0;
-  final _deepLinkURL =
-      "fluro://deeplink?path=/message&mesage=fluro%20rocks%21%21";
-  final _daysOfWeek = const [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday"
-  ];
+  final _deepLinkURL = "fluro://deeplink?path=/message&mesage=fluro%20rocks%21%21";
+  final _daysOfWeek = const ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
   Widget deepLinkWidget(BuildContext context) {
     return Stack(
@@ -95,18 +86,12 @@ class HomeComponentState extends State<HomeComponent> {
   @override
   Widget build(BuildContext context) {
     var menuWidgets = <Widget>[
-      menuButton(context, 'assets/images/ic_transform_native_hz.png',
-          "Native Animation", "native"),
-      menuButton(context, 'assets/images/ic_transform_fade_in_hz.png',
-          "Preset (Fade In)", "preset-fade"),
-      menuButton(context, 'assets/images/ic_transform_global_hz.png',
-          "Preset (Global transition)", "fixed-trans"),
-      menuButton(context, 'assets/images/ic_transform_custom_hz.png',
-          "Custom Transition", "custom"),
-      menuButton(context, 'assets/images/ic_result_hz.png', "Navigator Result",
-          "pop-result"),
-      menuButton(context, 'assets/images/ic_function_hz.png', "Function Call",
-          "function-call"),
+      menuButton(context, 'assets/images/ic_transform_native_hz.png', "Native Animation", "native"),
+      menuButton(context, 'assets/images/ic_transform_fade_in_hz.png', "Preset (Fade In)", "preset-fade"),
+      menuButton(context, 'assets/images/ic_transform_global_hz.png', "Preset (Global transition)", "fixed-trans"),
+      menuButton(context, 'assets/images/ic_transform_custom_hz.png', "Custom Transition", "custom"),
+      menuButton(context, 'assets/images/ic_result_hz.png', "Navigator Result", "pop-result"),
+      menuButton(context, 'assets/images/ic_function_hz.png', "Function Call", "function-call"),
     ];
 
     final size = MediaQuery.of(context).size;
@@ -155,8 +140,7 @@ class HomeComponentState extends State<HomeComponent> {
   }
 
   // helpers
-  Widget menuButton(
-      BuildContext context, String assetSrc, String title, String key) {
+  Widget menuButton(BuildContext context, String assetSrc, String title, String key) {
     return Padding(
       padding: EdgeInsets.all(4.0),
       child: Container(
@@ -206,12 +190,10 @@ class HomeComponentState extends State<HomeComponent> {
     if (key != "custom" && key != "function-call" && key != "fixed-trans") {
       if (key == "native") {
         hexCode = "#F76F00";
-        message =
-            "This screen should have appeared using the default flutter animation for the current OS";
+        message = "This screen should have appeared using the default flutter animation for the current OS";
       } else if (key == "preset-from-left") {
         hexCode = "#5BF700";
-        message =
-            "This screen should have appeared with a slide in from left transition";
+        message = "This screen should have appeared with a slide in from left transition";
         transitionType = TransitionType.inFromLeft;
       } else if (key == "preset-fade") {
         hexCode = "#F700D2";
@@ -220,8 +202,7 @@ class HomeComponentState extends State<HomeComponent> {
       } else if (key == "pop-result") {
         transitionType = TransitionType.native;
         hexCode = "#7d41f4";
-        message =
-            "When you close this screen you should see the current day of the week";
+        message = "When you close this screen you should see the current day of the week";
         result = "Today is ${_daysOfWeek[DateTime.now().weekday - 1]}!";
       }
 
@@ -231,19 +212,16 @@ class HomeComponentState extends State<HomeComponent> {
         route = "$route&result=$result";
       }
 
-      Application.router
-          .navigateTo(context, route, transition: transitionType)
-          .then((result) {
+      Application.router.navigateTo(context, route, transition: transitionType).then((result) {
         if (key == "pop-result") {
-          Application.router.navigateTo(context, "/demo/func?message=$result");
+          Application.router.navigateTo(context, "/demo/func?message=$result", state: {'text': "你好啊"});
         }
       });
     } else if (key == "custom") {
       hexCode = "#DFF700";
-      message =
-          "This screen should have appeared with a crazy custom transition";
-      var transition = (BuildContext context, Animation<double> animation,
-          Animation<double> secondaryAnimation, Widget child) {
+      message = "This screen should have appeared with a crazy custom transition";
+      var transition =
+          (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
         return ScaleTransition(
           scale: animation,
           child: RotationTransition(
@@ -260,8 +238,7 @@ class HomeComponentState extends State<HomeComponent> {
         transitionDuration: const Duration(milliseconds: 600),
       );
     } else if (key == "fixed-trans") {
-      Application.router.navigateTo(
-          context, "/demo/fixedtrans?message=Hello!&color_hex=#f4424b");
+      Application.router.navigateTo(context, "/demo/fixedtrans?message=Hello!&color_hex=#f4424b");
     } else {
       message = "You tapped the function button!";
       Application.router.navigateTo(context, "/demo/func?message=$message");

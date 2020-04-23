@@ -2,7 +2,7 @@
  * fluro
  * Created by Yakka
  * https://theyakka.com
- * 
+ *
  * Copyright (c) 2019 Yakka, LLC. All rights reserved.
  * See LICENSE for distribution and usage details.
  */
@@ -13,16 +13,17 @@ import 'package:flutter/painting.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
-var rootHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+var rootHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params, [state]) {
   return HomeComponent();
 });
 
-var demoRouteHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+var demoRouteHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params, [state]) {
   String message = params["message"]?.first;
   String colorHex = params["color_hex"]?.first;
   String result = params["result"]?.first;
+  if (state == null) {
+    result = state["text"];
+  }
   Color color = Color(0xFFFFFFFF);
   if (colorHex != null && colorHex.length > 0) {
     color = Color(ColorHelpers.fromHexString(colorHex));
@@ -32,7 +33,7 @@ var demoRouteHandler = Handler(
 
 var demoFunctionHandler = Handler(
     type: HandlerType.function,
-    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    handlerFunc: (BuildContext context, Map<String, List<String>> params, [state]) {
       String message = params["message"]?.first;
       showDialog(
         context: context,
@@ -67,14 +68,12 @@ var demoFunctionHandler = Handler(
 /// To test on Android:
 ///
 /// `adb shell am start -W -a android.intent.action.VIEW -d "fluro://deeplink?path=/message&mesage=fluro%20rocks%21%21" com.theyakka.fluro`
-var deepLinkHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+var deepLinkHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params, [state]) {
   String colorHex = params["color_hex"]?.first;
   String result = params["result"]?.first;
   Color color = Color(0xFFFFFFFF);
   if (colorHex != null && colorHex.length > 0) {
     color = Color(ColorHelpers.fromHexString(colorHex));
   }
-  return DemoSimpleComponent(
-      message: "DEEEEEP LINK!!!", color: color, result: result);
+  return DemoSimpleComponent(message: "DEEEEEP LINK!!!", color: color, result: result);
 });
