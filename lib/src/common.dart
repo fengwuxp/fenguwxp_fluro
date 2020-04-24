@@ -57,7 +57,7 @@ typedef Widget HandlerFunc7<T0, T1, T2, T3, T4, T5, T6>(
     BuildContext context, T0 arg0, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6,
     [Map<String, List<String>> uriVariables, dynamic state]);
 
-Handler handlerFactory0(HandlerFunc0 handler, [HandlerType type]) {
+Handler handlerFactory0(HandlerFunc0 handler, [HandlerType type = HandlerType.route]) {
   return Handler(
       type: type,
       handlerFunc: (BuildContext context, List<dynamic> parameters, Map<String, List<String>> uriVariables,
@@ -66,7 +66,7 @@ Handler handlerFactory0(HandlerFunc0 handler, [HandlerType type]) {
       });
 }
 
-Handler handlerFactory1<T0>(HandlerFunc1<T0> handler, [HandlerType type]) {
+Handler handlerFactory1<T0>(HandlerFunc1<T0> handler, [HandlerType type = HandlerType.route]) {
   return Handler(
       type: type,
       handlerFunc: (BuildContext context, List<dynamic> parameters, Map<String, List<String>> uriVariables,
@@ -75,7 +75,7 @@ Handler handlerFactory1<T0>(HandlerFunc1<T0> handler, [HandlerType type]) {
       });
 }
 
-Handler handlerFactory2<T0, T1>(HandlerFunc2<T0, T1> handler, [HandlerType type]) {
+Handler handlerFactory2<T0, T1>(HandlerFunc2<T0, T1> handler, [HandlerType type = HandlerType.route]) {
   return Handler(
       type: type,
       handlerFunc: (BuildContext context, List<dynamic> parameters, Map<String, List<String>> uriVariables,
@@ -84,7 +84,7 @@ Handler handlerFactory2<T0, T1>(HandlerFunc2<T0, T1> handler, [HandlerType type]
       });
 }
 
-Handler handlerFactory3<T0, T1, T2>(HandlerFunc3<T0, T1, T2> handler, [HandlerType type]) {
+Handler handlerFactory3<T0, T1, T2>(HandlerFunc3<T0, T1, T2> handler, [HandlerType type = HandlerType.route]) {
   return Handler(
       type: type,
       handlerFunc: (BuildContext context, List<dynamic> parameters, Map<String, List<String>> uriVariables,
@@ -93,7 +93,7 @@ Handler handlerFactory3<T0, T1, T2>(HandlerFunc3<T0, T1, T2> handler, [HandlerTy
       });
 }
 
-Handler handlerFactory4<T0, T1, T2, T3>(HandlerFunc4<T0, T1, T2, T3> handler, [HandlerType type]) {
+Handler handlerFactory4<T0, T1, T2, T3>(HandlerFunc4<T0, T1, T2, T3> handler, [HandlerType type = HandlerType.route]) {
   return Handler(
       type: type,
       handlerFunc: (BuildContext context, List<dynamic> parameters, Map<String, List<String>> uriVariables,
@@ -102,7 +102,8 @@ Handler handlerFactory4<T0, T1, T2, T3>(HandlerFunc4<T0, T1, T2, T3> handler, [H
       });
 }
 
-Handler handlerFactory5<T0, T1, T2, T3, T4>(HandlerFunc5<T0, T1, T2, T3, T4> handler, [HandlerType type]) {
+Handler handlerFactory5<T0, T1, T2, T3, T4>(HandlerFunc5<T0, T1, T2, T3, T4> handler,
+    [HandlerType type = HandlerType.route]) {
   return Handler(
       type: type,
       handlerFunc: (BuildContext context, List<dynamic> parameters, Map<String, List<String>> uriVariables,
@@ -112,7 +113,8 @@ Handler handlerFactory5<T0, T1, T2, T3, T4>(HandlerFunc5<T0, T1, T2, T3, T4> han
       });
 }
 
-Handler handlerFactory6<T0, T1, T2, T3, T4, T5>(HandlerFunc6<T0, T1, T2, T3, T4, T5> handler, [HandlerType type]) {
+Handler handlerFactory6<T0, T1, T2, T3, T4, T5>(HandlerFunc6<T0, T1, T2, T3, T4, T5> handler,
+    [HandlerType type = HandlerType.route]) {
   return Handler(
       type: type,
       handlerFunc: (BuildContext context, List<dynamic> parameters, Map<String, List<String>> uriVariables,
@@ -123,7 +125,7 @@ Handler handlerFactory6<T0, T1, T2, T3, T4, T5>(HandlerFunc6<T0, T1, T2, T3, T4,
 }
 
 Handler handlerFactory7<T0, T1, T2, T3, T4, T5, T6>(HandlerFunc7<T0, T1, T2, T3, T4, T5, T6> handler,
-    [HandlerType type]) {
+    [HandlerType type = HandlerType.route]) {
   return Handler(
       type: type,
       handlerFunc: (BuildContext context, List<dynamic> parameters, Map<String, List<String>> uriVariables,
