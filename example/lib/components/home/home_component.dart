@@ -8,7 +8,7 @@
  */
 import 'dart:async';
 
-import 'package:fluro/fluro.dart';
+import 'package:fenguwxp_fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -212,7 +212,7 @@ class HomeComponentState extends State<HomeComponent> {
         route = "$route&result=$result";
       }
 
-      Application.router.navigateTo(context, route,state: {'text': "你好啊2"}, transition: transitionType).then((result) {
+      Application.router.navigateTo(context, route, state: {'text': "你好啊2"}, transition: transitionType).then((result) {
         if (key == "pop-result") {
           Application.router.navigateTo(context, "/demo/func?message=$result", state: {'text': "你好啊"});
         }
